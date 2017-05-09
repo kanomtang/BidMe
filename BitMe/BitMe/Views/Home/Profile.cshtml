@@ -11,35 +11,41 @@
             <h2> </h2>
                 <img class="img-rounded" src="~/Image/20161217_114128.jpg" width="230" height="230"/>
         </div>
-
+       @using (Html.BeginForm("Profile"))
+       {
         <div class="col-sm-9">
             <h4><small>User ID</small></h4>
             <hr>
-            <h2>iJOKE</h2>
+            <h2>@Html.DisplayFor(model => model.UName)</h2>
+            
             <p>Description</p>
             <br>
 
             <h4><small>Balance</small></h4>
             <hr>
-            <h2>1000 $</h2>
+            <h5>@Html.DisplayFor(model => model.UMoney)</h5>
             <br>
 
             <h4><small>Email</small></h4>
             <hr>
-            <h2>joker.arthorn@gmail.com</h2>
+            <h2>@Html.DisplayFor(model => model.UEmail)</h2>
+            
             <br>
 
             <h4><small>Address</small></h4>
             <hr>
-            <h2>Chiangmai Thailand</h2>
+            <h2>@Html.DisplayFor(model => model.UAccountID)</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             <br>
             <hr>
             <br>
             
-            <button type="button" class="btn btn-danger">Edit Profile</button>
-
+            <button type="button" class="btn btn-danger" OnClick="window.open('EditProfile', 'Profile');">Edit Profile</button>
+            
 
         </div>
+       }
+        
     </div>
 </div>
+        
