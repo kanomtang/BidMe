@@ -9,8 +9,9 @@ namespace BitMe.Models
     {
         public string UName { get; set; }
         public string UPassword { get; set; }
+        public string OldPassword { get; set; }
         public decimal UMoney { get; set; }
-        public double UAccountID { get; set; }
+        public string UAccount { get; set; }
         public string UEmail { get; set; }
 
     }

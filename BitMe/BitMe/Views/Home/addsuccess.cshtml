@@ -1,0 +1,29 @@
+﻿@model BitMe.Models.Item
+
+@{
+    ViewBag.Title = "addsuccess";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+
+</head>
+
+<body>
+    <div>@Model.ProductName</div>
+    <div>@Model.ProductCategory</div>
+    <div>@Model.ProductPrice</div>
+    <div>@Model.ProductDescription</div>
+    <div>@Model.bidDeadline</div>
+    <img src="<%= Url.Action(" GetImage") %>" />
+
+
+</body>
+
+</html>
