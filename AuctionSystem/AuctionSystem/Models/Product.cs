@@ -13,5 +13,13 @@ namespace AuctionSystem.Models
         public int productID { get; set; }
         public byte[] image { get; set; }
 
+        public Product(String name,String description,decimal price)
+        {
+            this.name = name;
+            this.price = price;
+            this.description = description;
+        }
+
+        
     }
 }
