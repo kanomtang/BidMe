@@ -15,7 +15,7 @@ namespace BitMe.Controllers
         User user = new Models.User();
         User model = new User();
         Item item = new Item();
-        ProductEn db = new ProductEn();
+      
      
 
 
