@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BitMe.Entities;
 using BitMe.Models;
+using System.IO;
 
 namespace BitMe.Controllers
 {
@@ -14,8 +15,8 @@ namespace BitMe.Controllers
         User user = new Models.User();
         User model = new User();
         Item item = new Item();
-
-        private ProductRepository repository;
+        ProductEn db = new ProductEn();
+     
 
 
         // GET: Home
@@ -42,12 +43,12 @@ namespace BitMe.Controllers
         {
             //Connect to db and add each data to model to display.
             //such as model.UName = db.Uname;
-            
+
             model.UName = "";
             model.UAccount = "";
             model.UPassword = "";
             model.UEmail = "Email@gmail";
-   
+
             return View(model);
         }
 
@@ -68,22 +69,30 @@ namespace BitMe.Controllers
 
         [HttpGet]
         public ActionResult addProduct()
-         {
+        {
             return View();
-         }
+        }
 
         [HttpPost]
-        public ActionResult addProduct(Item item)
+        public ActionResult addProduct(Item item,HttpPostedFileBase Image)
         {
+
             if (ModelState.IsValid)
             {
-                return View("addsuccess", item);
+               if(Image.ContentLength>0){
+                   if(Path.GetExtension(Image.FileName).ToLower()==".jpg"||
+                   Path.GetExtension(Image.FileName).ToLower()==".png"||
+                   Path.GetExtension(Image.FileName).ToLower()==".jpeg"){
+                   //db.addItem(item,Image);
+                       return View("addsuccess");
+                   }
+               }
             }
-            else
-            {
-                //if error
-                return View();
-            }
+
+
+
+            return View("addsuccess");
+         
 
         }
         public FileContentResult GetImage()
