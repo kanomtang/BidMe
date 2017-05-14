@@ -116,5 +116,10 @@ namespace BitMe.Controllers
             }
             return View("Index");
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }

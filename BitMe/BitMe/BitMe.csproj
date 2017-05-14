@@ -44,10 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -95,8 +103,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Image\20161217_114128.jpg" />
+    <Content Include="Models\Repositories\BidMeDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BidMeDB.edmx</DependentUpon>
+      <LastGenOutput>BidMeDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Repositories\BidMeDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BidMeDB.edmx</DependentUpon>
+      <LastGenOutput>BidMeDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Repositories\BidMeDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BidMeDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Repositories\BidMeDB.edmx.diagram">
+      <DependentUpon>BidMeDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -114,6 +139,36 @@
     <Compile Include="Models\Bid.cs" />
     <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Repositories\AuctionProductTable.cs">
+      <DependentUpon>BidMeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\BidMeDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BidMeDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\BidMeDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BidMeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\BidMeDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BidMeDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\BrandTable.cs">
+      <DependentUpon>BidMeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\CategoryTable.cs">
+      <DependentUpon>BidMeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\TagTable.cs">
+      <DependentUpon>BidMeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\UserTable.cs">
+      <DependentUpon>BidMeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Seller.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +186,7 @@
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\addProduct.cshtml" />
     <Content Include="Views\Home\addsuccess.cshtml" />
+    <Content Include="Views\Home\RegisterPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -140,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
