@@ -20,8 +20,20 @@ namespace BitMe.Controllers
 
 
         // GET: Home
+      
         public ActionResult Index()
         {
+
+            var temp = db.GetAllProduct();
+            if (temp==null)
+            {
+                
+            }
+            else if (temp!=null)
+            {
+                
+            }
+          
             return View();
         }
 
