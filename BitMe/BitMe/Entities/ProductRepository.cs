@@ -12,16 +12,14 @@ namespace BitMe.Entities
 {
     public class ProductRepository
     {
-        //BidMeDatabaseEntities1 db = new BidMeDatabaseEntities1();
-        //above line for create instace of database 
+      
         BidMeDBEntities db = new BidMeDBEntities();
 
         public void addItem(Item i, HttpPostedFileBase p)
         {
             var a = i.ProductName;
             var b = ConvertToBytes(p);
-            //db.AddAP(a, b);
-            //above line for adding product to database
+ 
         }
 
 
@@ -35,7 +33,7 @@ namespace BitMe.Entities
 
            // var b =db.RetrievAllUsername();
             var d =db.UserTables.Find(u.UName);
-            if(d.Equals(true){
+            if(d.Equals(true)){
                 return 1;
             }
             return 0 ;
@@ -44,6 +42,13 @@ namespace BitMe.Entities
         public void RegisterNewUser(User u)
         {
             db.RegisterNewUser(u.UName, u.UPassword, u.UEmail, u.UAdress);
+        }
+        public int login(User u )
+        {
+         var a =  db.UserTables.Where(x=>x.UName==u.UName);
+          
+
+            return 0;
         }
     }
 }

@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BidMeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AuctionProductTable">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SellerID" Type="int" />
+          <Property Name="SellerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BuyerID" Type="int" />
+          <Property Name="BuyerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TagID" Type="int" />
+          <Property Name="WinnerBid" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="BidStartTime" Type="datetime" />
+          <Property Name="BidEndTime" Type="datetime" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="BrandTable">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagTable">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="UName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="UEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="UAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pname" Type="nvarchar" Mode="In" />
+          <Parameter Name="pdes" Type="nvarchar" Mode="In" />
+          <Parameter Name="ima" Type="image" Mode="In" />
+        </Function>
+        <Function Name="RegisterNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UNameparam" Type="nvarchar" Mode="In" />
+          <Parameter Name="UPasswordparam" Type="nvarchar" Mode="In" />
+          <Parameter Name="UEmailparam" Type="nvarchar" Mode="In" />
+          <Parameter Name="UAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ReteiveAllBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RetreiveallCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RetrievAllUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BidMeDBModelStoreContainer">
+          <EntitySet Name="AuctionProductTable" EntityType="Self.AuctionProductTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandTable" EntityType="Self.BrandTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagTable" EntityType="Self.TagTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BidMeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AuctionProductTable">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SellerID" Type="Int32" />
+          <Property Name="SellerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerID" Type="Int32" />
+          <Property Name="BuyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TagID" Type="Int32" />
+          <Property Name="WinnerBid" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BidStartTime" Type="DateTime" Precision="3" />
+          <Property Name="BidEndTime" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="BrandTable">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagTable">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="UName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="BidMeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuctionProductTables" EntityType="Self.AuctionProductTable" />
+          <EntitySet Name="BrandTables" EntityType="Self.BrandTable" />
+          <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
+          <EntitySet Name="TagTables" EntityType="Self.TagTable" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <FunctionImport Name="AddProduct">
+            <Parameter Name="pname" Mode="In" Type="String" />
+            <Parameter Name="pdes" Mode="In" Type="String" />
+            <Parameter Name="ima" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="RegisterNewUser">
+            <Parameter Name="UNameparam" Mode="In" Type="String" />
+            <Parameter Name="UPasswordparam" Mode="In" Type="String" />
+            <Parameter Name="UEmailparam" Mode="In" Type="String" />
+            <Parameter Name="UAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReteiveAllBrand" ReturnType="Collection(String)" />
+          <FunctionImport Name="RetreiveallCategory" />
+          <FunctionImport Name="RetrievAllUsername" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BidMeDBModelStoreContainer" CdmEntityContainer="BidMeDBEntities">
+          <EntitySetMapping Name="AuctionProductTables">
+            <EntityTypeMapping TypeName="BidMeDBModel.AuctionProductTable">
+              <MappingFragment StoreEntitySet="AuctionProductTable">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="WinnerBid" ColumnName="WinnerBid" />
+                <ScalarProperty Name="BidStartTime" ColumnName="BidStartTime" />
+                <ScalarProperty Name="BidEndTime" ColumnName="BidEndTime" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandTables">
+            <EntityTypeMapping TypeName="BidMeDBModel.BrandTable">
+              <MappingFragment StoreEntitySet="BrandTable">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTables">
+            <EntityTypeMapping TypeName="BidMeDBModel.CategoryTable">
+              <MappingFragment StoreEntitySet="CategoryTable">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagTables">
+            <EntityTypeMapping TypeName="BidMeDBModel.TagTable">
+              <MappingFragment StoreEntitySet="TagTable">
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="BidMeDBModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="UPassword" ColumnName="UPassword" />
+                <ScalarProperty Name="UEmail" ColumnName="UEmail" />
+                <ScalarProperty Name="UAddress" ColumnName="UAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="BidMeDBModel.Store.AddProduct" />
+          <FunctionImportMapping FunctionImportName="RegisterNewUser" FunctionName="BidMeDBModel.Store.RegisterNewUser" />
+          <FunctionImportMapping FunctionImportName="ReteiveAllBrand" FunctionName="BidMeDBModel.Store.ReteiveAllBrand" />
+          <FunctionImportMapping FunctionImportName="RetreiveallCategory" FunctionName="BidMeDBModel.Store.RetreiveallCategory" />
+          <FunctionImportMapping FunctionImportName="RetrievAllUsername" FunctionName="BidMeDBModel.Store.RetrievAllUsername" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
