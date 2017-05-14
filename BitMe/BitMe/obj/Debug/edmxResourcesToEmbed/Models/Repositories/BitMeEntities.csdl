@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BidMeDBnewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AuctionProductTable">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SellerID" Type="Int32" />
+    <Property Name="SellerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuyerID" Type="Int32" />
+    <Property Name="BuyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TagID" Type="Int32" />
+    <Property Name="WinnerBid" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BidStartTime" Type="DateTime" Precision="3" />
+    <Property Name="BidEndTime" Type="DateTime" Precision="3" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="BrandTable">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="Int32" Nullable="false" />
+    <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryTable">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagTable">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="Int32" Nullable="false" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="UName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="BidMeDBnewEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AuctionProductTables" EntityType="Self.AuctionProductTable" />
+    <EntitySet Name="BrandTables" EntityType="Self.BrandTable" />
+    <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
+    <EntitySet Name="TagTables" EntityType="Self.TagTable" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <FunctionImport Name="AddProduct">
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="pdes" Mode="In" Type="String" />
+      <Parameter Name="ima" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="RegisterNewUser">
+      <Parameter Name="UNameparam" Mode="In" Type="String" />
+      <Parameter Name="UPasswordparam" Mode="In" Type="String" />
+      <Parameter Name="UEmailparam" Mode="In" Type="String" />
+      <Parameter Name="UAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ReteiveAllBrand" ReturnType="Collection(String)" />
+    <FunctionImport Name="RetreiveallCategory" />
+    <FunctionImport Name="RetrievAllUsername" />
+    <EntitySet Name="Products" EntityType="BidMeDBnewModel.Product" />
+  </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="ProductName" />
+      <PropertyRef Name="ProductPrice" />
+      <PropertyRef Name="ProductDescription" />
+      <PropertyRef Name="ProductCatagory" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCatagory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

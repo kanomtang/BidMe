@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BidMeDBnewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AuctionProductTable">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SellerID" Type="int" />
+    <Property Name="SellerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuyerID" Type="int" />
+    <Property Name="BuyerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TagID" Type="int" />
+    <Property Name="WinnerBid" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BidStartTime" Type="datetime" />
+    <Property Name="BidEndTime" Type="datetime" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="BrandTable">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryTable">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductCatagory" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductImage" Type="image" />
+  </EntityType>
+  <EntityType Name="TagTable">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="int" Nullable="false" />
+    <Property Name="BrandID" Type="int" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="UName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="UEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="UAddress" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pname" Type="nvarchar" Mode="In" />
+    <Parameter Name="pdes" Type="nvarchar" Mode="In" />
+    <Parameter Name="ima" Type="image" Mode="In" />
+  </Function>
+  <Function Name="RegisterNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UNameparam" Type="nvarchar" Mode="In" />
+    <Parameter Name="UPasswordparam" Type="nvarchar" Mode="In" />
+    <Parameter Name="UEmailparam" Type="nvarchar" Mode="In" />
+    <Parameter Name="UAddress" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ReteiveAllBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RetreiveallCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RetrievAllUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="BidMeDBnewModelStoreContainer">
+    <EntitySet Name="AuctionProductTable" EntityType="Self.AuctionProductTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BrandTable" EntityType="Self.BrandTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagTable" EntityType="Self.TagTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -44,16 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
+    <Reference Include="Accessibility" />
+    <Reference Include="Microsoft.AspNet.Scaffolding.EntityFramework.12.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -103,24 +102,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Image\20161217_114128.jpg" />
-    <Content Include="Models\Repositories\BidMeDB.Context.tt">
+    <Content Include="Models\Repositories\BitMeEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BidMeDB.edmx</DependentUpon>
-      <LastGenOutput>BidMeDB.Context.cs</LastGenOutput>
+      <DependentUpon>BitMeEntities.edmx</DependentUpon>
+      <LastGenOutput>BitMeEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Repositories\BidMeDB.tt">
+    <Content Include="Models\Repositories\BitMeEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BidMeDB.edmx</DependentUpon>
-      <LastGenOutput>BidMeDB.cs</LastGenOutput>
+      <DependentUpon>BitMeEntities.edmx</DependentUpon>
+      <LastGenOutput>BitMeEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Repositories\BidMeDB.edmx">
+    <EntityDeploy Include="Models\Repositories\BitMeEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BidMeDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>BitMeEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Repositories\BidMeDB.edmx.diagram">
-      <DependentUpon>BidMeDB.edmx</DependentUpon>
+    <Content Include="Models\Repositories\BitMeEntities.edmx.diagram">
+      <DependentUpon>BitMeEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -140,34 +139,37 @@
     <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Repositories\AuctionProductTable.cs">
-      <DependentUpon>BidMeDB.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Repositories\BidMeDB.Context.cs">
+    <Compile Include="Models\Repositories\BitMeEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BidMeDB.Context.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Repositories\BidMeDB.cs">
+    <Compile Include="Models\Repositories\BitMeEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BidMeDB.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Repositories\BidMeDB.Designer.cs">
+    <Compile Include="Models\Repositories\BitMeEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BidMeDB.edmx</DependentUpon>
+      <DependentUpon>BitMeEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories\BrandTable.cs">
-      <DependentUpon>BidMeDB.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories\CategoryTable.cs">
-      <DependentUpon>BidMeDB.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\Product.cs">
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories\TagTable.cs">
-      <DependentUpon>BidMeDB.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories\UserTable.cs">
-      <DependentUpon>BidMeDB.tt</DependentUpon>
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Seller.cs" />
     <Compile Include="Models\User.cs" />
@@ -178,7 +180,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -187,6 +188,7 @@
     <Content Include="Views\Home\addProduct.cshtml" />
     <Content Include="Views\Home\addsuccess.cshtml" />
     <Content Include="Views\Home\RegisterPage.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,6 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

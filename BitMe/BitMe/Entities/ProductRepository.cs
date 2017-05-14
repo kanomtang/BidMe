@@ -12,9 +12,8 @@ namespace BitMe.Entities
 {
     public class ProductRepository
     {
+        BidMeDBnewEntities3 db = new BidMeDBnewEntities3();
       
-        BidMeDBEntities db = new BidMeDBEntities();
-
         public void addItem(Item i, HttpPostedFileBase p)
         {
             var a = i.ProductName;
@@ -39,9 +38,26 @@ namespace BitMe.Entities
             return 0 ;
         }
 
+        public List<Item> GetAllProduct()
+        {
+            List<Item> productList = new List<Item>();
+            var items = from p in db.Products select p;
+            foreach (var x in (dynamic)items)
+            {
+
+                items.ProductName = x.ProductName;
+                items.ProductPrice = x.ProductPrice;
+                items.ProductCategory = x.ProductCategory;
+                items.ProductDescription = x.ProductDescription;
+                productList.Add(items);
+            }
+            return productList;
+        }
+
         public void RegisterNewUser(User u)
         {
-            db.RegisterNewUser(u.UName, u.UPassword, u.UEmail, u.UAdress);
+            
+             db.RegisterNewUser(u.UName, u.UPassword, u.UEmail, u.UAdress);
         }
         public int login(User u )
         {

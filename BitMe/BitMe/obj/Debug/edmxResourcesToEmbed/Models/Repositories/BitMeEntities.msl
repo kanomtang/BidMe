@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BidMeDBnewModelStoreContainer" CdmEntityContainer="BidMeDBnewEntities3">
+    <EntitySetMapping Name="AuctionProductTables">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.AuctionProductTable">
+        <MappingFragment StoreEntitySet="AuctionProductTable">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+          <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+          <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="WinnerBid" ColumnName="WinnerBid" />
+          <ScalarProperty Name="BidStartTime" ColumnName="BidStartTime" />
+          <ScalarProperty Name="BidEndTime" ColumnName="BidEndTime" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandTables">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.BrandTable">
+        <MappingFragment StoreEntitySet="BrandTable">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTables">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.CategoryTable">
+        <MappingFragment StoreEntitySet="CategoryTable">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagTables">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.TagTable">
+        <MappingFragment StoreEntitySet="TagTable">
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="UPassword" ColumnName="UPassword" />
+          <ScalarProperty Name="UEmail" ColumnName="UEmail" />
+          <ScalarProperty Name="UAddress" ColumnName="UAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="BidMeDBnewModel.Store.AddProduct" />
+    <FunctionImportMapping FunctionImportName="RegisterNewUser" FunctionName="BidMeDBnewModel.Store.RegisterNewUser" />
+    <FunctionImportMapping FunctionImportName="ReteiveAllBrand" FunctionName="BidMeDBnewModel.Store.ReteiveAllBrand" />
+    <FunctionImportMapping FunctionImportName="RetreiveallCategory" FunctionName="BidMeDBnewModel.Store.RetreiveallCategory" />
+    <FunctionImportMapping FunctionImportName="RetrievAllUsername" FunctionName="BidMeDBnewModel.Store.RetrievAllUsername" />
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="ProductCatagory" ColumnName="ProductCatagory" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
