@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using BitMe.Models;
 using System.Web;
 using System.Drawing;
+using BitMe.Models.Repositories;
 
 namespace BitMe.Entities
 {
-    interface ProductRepository
+    public class ProductRepository
     {
         //BidMeDatabaseEntities1 db = new BidMeDatabaseEntities1();
         //above line for create instace of database 
-
+        BidMeDBEntities db = new BidMeDBEntities();
 
         public void addItem(Item i, HttpPostedFileBase p)
         {
@@ -29,6 +30,20 @@ namespace BitMe.Entities
             ImageConverter converter = new ImageConverter();
             return (byte[])converter.ConvertTo(image, typeof(byte[]));
         }
+        public int checkingDuplicateUsername(User u)
+        {
 
+           // var b =db.RetrievAllUsername();
+            var d =db.UserTables.Find(u.UName);
+            if(d.Equals(true){
+                return 1;
+            }
+            return 0 ;
+        }
+
+        public void RegisterNewUser(User u)
+        {
+            db.RegisterNewUser(u.UName, u.UPassword, u.UEmail, u.UAdress);
+        }
     }
 }
