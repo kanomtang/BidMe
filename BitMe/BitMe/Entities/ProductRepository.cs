@@ -7,6 +7,7 @@ using BitMe.Models;
 using System.Web;
 using System.Drawing;
 using BitMe.Models.Repositories;
+using System.IO;
 
 namespace BitMe.Entities
 {
@@ -64,7 +65,7 @@ namespace BitMe.Entities
             return products;
         }
 
-        public List<Models.Repositories.AuctionProductTable> GetAllProduct()
+        public List<Item> GetAllProduct()
         {
             
                 List<Item> productList = new List<Item>();
@@ -73,14 +74,19 @@ namespace BitMe.Entities
                 {
                     Item product = new Item();
                     product.ProductName = x.ProductName;
-                   // product.ProductPrice = x.ProductPrice;
-                    product.ProductDescription = x.ProductDescription;
-                    
+                //product.ProductPrice = x.ProductPrice;
+                //product.image = ByteArrayToImagebyMemoryStream(x.Image) ;
                     productList.Add(product);
                 }
                
 
-            return null;
+            return productList;
+        }
+        public static Image ByteArrayToImagebyMemoryStream(byte[] imageByte)
+        {
+            MemoryStream ms = new MemoryStream(imageByte);
+            Image image = Image.FromStream(ms);
+            return image;
         }
     }
 }
