@@ -9,7 +9,7 @@ namespace BitMe.Models
     public class Item
     {
         public byte[] picture { get; set; }
-        public Image image { get; set; }
+        public HttpPostedFileBase image { get; set; }
         public string ImageMimeType { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; }
@@ -18,5 +18,6 @@ namespace BitMe.Models
         public decimal ProductPrice { get; set; }
         public int BrandID { get; set; }
         public DateTime bidDeadline { get; set; }
+        public string TempWinner { get; set; }
     }
 }

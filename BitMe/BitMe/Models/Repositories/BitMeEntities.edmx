@@ -46,7 +46,7 @@
           <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductCatagory" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductImage" Type="image" />
+          <Property Name="ProductImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -196,7 +196,7 @@
           <EntitySet Name="Products" EntityType="BidMeDBnewModel.Product" />
           <EntitySet Name="sysdiagrams" EntityType="BidMeDBnewModel.sysdiagram" />
           <FunctionImport Name="checkDuplicateName" ReturnType="Collection(String)">
-            <Parameter Name="UName" Mode="In" Type="String" />
+          <Parameter Name="UName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="login" ReturnType="Collection(BidMeDBnewModel.login_Result)">
             <Parameter Name="Uname" Mode="In" Type="String" />

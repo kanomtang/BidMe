@@ -66,27 +66,51 @@ namespace BitMe.Entities
         }
 
         public List<Item> GetAllProduct()
-        {
-            
+        {   
                 List<Item> productList = new List<Item>();
-                var products = from p in db.AuctionProductTables select p;
+                var products = from p in db.Products select p;
                 foreach (var x in products)
                 {
                     Item product = new Item();
+                    product.ProductID = x.ProductId;
                     product.ProductName = x.ProductName;
-                //product.ProductPrice = x.ProductPrice;
-                //product.image = ByteArrayToImagebyMemoryStream(x.Image) ;
+                    product.ProductPrice = x.ProductPrice;
+                    product.ProductCategory = x.ProductCatagory;
+                    //product.image = x.ProductImage;
                     productList.Add(product);
                 }
                
 
             return productList;
         }
+
         public static Image ByteArrayToImagebyMemoryStream(byte[] imageByte)
         {
             MemoryStream ms = new MemoryStream(imageByte);
             Image image = Image.FromStream(ms);
             return image;
+        }
+
+        public void EditUserProfile(User u)
+        {
+            var user = db.UserTables.Where(x => x.UName == u.UName).ToList();
+            //Update in db 
+        }
+
+        public void Auction(Bid bidProduct)
+        {
+            var AuctionProduct = from p in db.AuctionProductTables select p;
+            foreach (var x in AuctionProduct)
+            {
+                x.ProductID = bidProduct.product.ProductID;
+                x.ProductName = bidProduct.product.ProductName;
+                x.ProductDescription = bidProduct.product.ProductDescription;
+                x.BuyerName = bidProduct.user.UName;
+                x.ProductPrice = bidProduct.product.ProductPrice;
+                x.BidStartTime = DateTime.Now;
+
+            }
+            
         }
     }
 }

@@ -19,16 +19,13 @@ namespace BitMe.Controllers
         ProductRepository db = new ProductRepository();
         
 
-        // GET: Home
-      
+
+        [HttpGet]
         public ActionResult Index()
         {
-
             var productList = db.GetAllProduct();
-           
             return View(productList);
         }
-
 
         public new ActionResult Profile()
         {
@@ -42,23 +39,17 @@ namespace BitMe.Controllers
             //model.UMoney = 1000;
             return View(model);
         }
+
         [HttpGet]
         public ActionResult EditProfile()
         {
-            //Connect to db and add each data to model to display.
-            //such as model.UName = db.Uname;
-
-            //model.UName = "";
-            //model.UAccount = "";
-            //model.UPassword = "";
-            //model.UEmail = "Email@gmail";
-
-            return View(model);
+            return View();
         }
 
         [HttpPost]
         public ActionResult EditProfile(User userProfile)
         {
+            
             if (ModelState.IsValid)
             {
                 //user.UName = userProfile.UName;
@@ -91,10 +82,7 @@ namespace BitMe.Controllers
                     db.addItem(item,Image);
                }
             }
-
-
-
-            return View("Index");
+            return View();
          
 
         }
@@ -104,19 +92,29 @@ namespace BitMe.Controllers
             byte[] picture = item.picture;
             return File(picture, "image");
         }
-        
-        public ActionResult Bid(int productID,User user)
-        {
 
-            var selectProduct = db.FetchByID(2);
+        /*
+        [HttpGet]
+        public ActionResult Bid()
+        {
+            return View();
+        }
+        */
+        [HttpGet]
+        public ActionResult Bid(int id)
+        {
+            var selectProduct = db.FetchByID(id);
             Models.Item myProduct = new Models.Item();
             foreach (var x in selectProduct)
             {
                 myProduct.ProductName = x.ProductName;
                 myProduct.ProductDescription = x.ProductDescription;
                 //myProduct.ProductPrice = x.ProductPrice;
+                myProduct.TempWinner = x.BuyerName;
+                //myProduct.ProductPrice = x.ProductPrice;
             }
             Bid myBid = new Bid(user,myProduct);
+            //db.Auction(myBid);
             return View(myBid);
         }
 
@@ -136,9 +134,10 @@ namespace BitMe.Controllers
                 if (db.checkingDuplicateUsername(u) == 1)
                 {
                     db.RegisterNewUser(u);
+                    return RedirectToAction("Index", u);
                 }
             }
-            return View("Index");
+            return View("RegisterPage");
         }
 
         [HttpGet]
@@ -158,10 +157,15 @@ namespace BitMe.Controllers
                 this.user.UPassword = u.UPassword;
                 this.user.UEmail = u.UEmail;
                 this.user.UAdress = u.UAdress;
-                return View("Index");
+                //return View("Index");
+                return RedirectToAction("Index","Home",u);
+            }
+            else
+            {
+                return View("RegisterPage");
             }
 
-            return View("RegisterPage");
+            
         }
     }
 }
