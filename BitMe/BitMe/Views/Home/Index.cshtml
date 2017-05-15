@@ -9,8 +9,11 @@
         <div class="navbar-right">
             @Html.ActionLink("Sign out", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
+        <div class="navbar-right">
+            @Html.ActionLink("Profile", "Profile", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
         <div class="navbar-right"> 
-            @Html.ActionLink("Sell Product", "SellProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Sell Product", "addProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-right">
             @Html.ActionLink("Edit Profile", "EditProfile", "Home", new { area = "" }, new { @class = "navbar-brand" })

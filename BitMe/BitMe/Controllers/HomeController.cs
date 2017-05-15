@@ -72,18 +72,10 @@ namespace BitMe.Controllers
         [HttpPost]
         public ActionResult addProduct(Item item,HttpPostedFileBase Image)
         {
-
+            db.addItem(item, Image);
+         return View("addsuccess",item);
             
-               if(Image!=null){
-                   if(Path.GetExtension(Image.FileName).ToLower()==".jpg"||
-                   Path.GetExtension(Image.FileName).ToLower()==".png"||
-                   Path.GetExtension(Image.FileName).ToLower()==".jpeg"){
-                    //db.addItem(item,Image);
-                    db.addItem(item,Image);
-               }
-            }
-            return View();
-         
+
 
         }
 
@@ -94,7 +86,7 @@ namespace BitMe.Controllers
         }
 
         [HttpGet]
-        public ActionResult Bid(int id)
+        public ActionResult Bid(int id,User user)
         {
             var selectProduct = db.FetchByID(id);
             Models.Item myProduct = new Models.Item();
@@ -163,16 +155,6 @@ namespace BitMe.Controllers
             
         }
 
-        [HttpGet]
-        public ActionResult SellProduct()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult SellProduct(Item product)
-        {
-            return View();
-        }
     }
 }

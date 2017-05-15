@@ -4,6 +4,7 @@
     <EntitySetMapping Name="AuctionProductTables">
       <EntityTypeMapping TypeName="BidMeDBnewModel.AuctionProductTable">
         <MappingFragment StoreEntitySet="AuctionProductTable">
+          <ScalarProperty Name="ProductCatagory" ColumnName="ProductCatagory" />
           <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -12,7 +13,6 @@
           <ScalarProperty Name="SellerName" ColumnName="SellerName" />
           <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
           <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
-          <ScalarProperty Name="TagID" ColumnName="TagID" />
           <ScalarProperty Name="WinnerBid" ColumnName="WinnerBid" />
           <ScalarProperty Name="BidStartTime" ColumnName="BidStartTime" />
           <ScalarProperty Name="BidEndTime" ColumnName="BidEndTime" />

@@ -22,7 +22,9 @@
     <div>@Model.ProductDescription</div>
     <div>@Model.bidDeadline</div>
     <img src="<%= Url.Action(" GetImage") %>" />
-
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
 </body>
 

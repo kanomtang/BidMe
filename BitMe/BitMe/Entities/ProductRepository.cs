@@ -15,13 +15,28 @@ namespace BitMe.Entities
     {
         BidMeDBnewEntities3 db = new BidMeDBnewEntities3();
 
-        public void addItem(Item i, HttpPostedFileBase p)
+        public void addItem(Item i, HttpPostedFileBase pic)
         {
-            var a = i.ProductName;
-            var b = ConvertToBytes(p);
- 
+           // var a = i.ProductName;
+            //var b = ConvertToBytes(pic);
+
+            var products = from p in db.AuctionProductTables select p;
+            var newId = GetAllProduct().Count() + 1;
+            
+            db.AuctionProductTables.Add(new AuctionProductTable
+            {
+                ProductID = newId,
+                ProductName = i.ProductName,
+                ProductDescription = i.ProductDescription,
+                ProductPrice = i.ProductPrice,
+                
+            });
+            
+            db.SaveChanges();
+
+
         }
-        
+
         public byte[] ConvertToBytes(HttpPostedFileBase image)
         {
             ImageConverter converter = new ImageConverter();
@@ -75,9 +90,9 @@ namespace BitMe.Entities
                     product.ProductID = x.ProductID;
                     product.ProductName = x.ProductName;
                     product.TempWinner = x.BuyerName;
-                    
+                    product.ProductCategory = x.ProductCatagory;
+                    //product.bidDeadline = x.BidEndTime;
                     //product.ProductPrice = x.ProductPrice;
-                    //product.ProductCategory = x.ProductCatagory;
                     //product.image = x.ProductImage;
                     productList.Add(product);
                 }

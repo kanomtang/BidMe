@@ -11,12 +11,12 @@
     <Property Name="SellerName" Type="nvarchar" MaxLength="50" />
     <Property Name="BuyerID" Type="int" />
     <Property Name="BuyerName" Type="nvarchar" MaxLength="50" />
-    <Property Name="TagID" Type="int" />
     <Property Name="WinnerBid" Type="decimal" Precision="18" Scale="0" />
     <Property Name="BidStartTime" Type="datetime" />
     <Property Name="BidEndTime" Type="datetime" />
     <Property Name="Image" Type="image" />
     <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ProductCatagory" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="BrandTable">
     <Key>
