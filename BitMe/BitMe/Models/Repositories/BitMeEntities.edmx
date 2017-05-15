@@ -36,17 +36,6 @@
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductCatagory" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductImage" Type="image" />
-        </EntityType>
         <EntityType Name="TagTable">
           <Key>
             <PropertyRef Name="TagID" />
@@ -84,7 +73,6 @@
           <EntitySet Name="AuctionProductTable" EntityType="Self.AuctionProductTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BrandTable" EntityType="Self.BrandTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagTable" EntityType="Self.TagTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -162,23 +150,7 @@
           <FunctionImport Name="ReteiveAllBrand" ReturnType="Collection(String)" />
           <FunctionImport Name="RetreiveallCategory" />
           <FunctionImport Name="RetrievAllUsername" />
-          <EntitySet Name="Products" EntityType="BidMeDBnewModel.Product" />
         </EntityContainer>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="ProductPrice" />
-            <PropertyRef Name="ProductDescription" />
-            <PropertyRef Name="ProductCatagory" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductCatagory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -245,18 +217,6 @@
           <FunctionImportMapping FunctionImportName="ReteiveAllBrand" FunctionName="BidMeDBnewModel.Store.ReteiveAllBrand" />
           <FunctionImportMapping FunctionImportName="RetreiveallCategory" FunctionName="BidMeDBnewModel.Store.RetreiveallCategory" />
           <FunctionImportMapping FunctionImportName="RetrievAllUsername" FunctionName="BidMeDBnewModel.Store.RetrievAllUsername" />
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="BidMeDBnewModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-                <ScalarProperty Name="ProductCatagory" ColumnName="ProductCatagory" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

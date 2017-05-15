@@ -31,17 +31,6 @@
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ProductId" />
-    </Key>
-    <Property Name="ProductId" Type="int" Nullable="false" />
-    <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ProductCatagory" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ProductImage" Type="image" />
-  </EntityType>
   <EntityType Name="TagTable">
     <Key>
       <PropertyRef Name="TagID" />
@@ -79,7 +68,6 @@
     <EntitySet Name="AuctionProductTable" EntityType="Self.AuctionProductTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BrandTable" EntityType="Self.BrandTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagTable" EntityType="Self.TagTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

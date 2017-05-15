@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="BidMeDBnewModel.CategoryTable" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BidMeDBnewModel.TagTable" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BidMeDBnewModel.UserTable" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BidMeDBnewModel.Product" Width="1.5" PointX="1.125" PointY="5.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

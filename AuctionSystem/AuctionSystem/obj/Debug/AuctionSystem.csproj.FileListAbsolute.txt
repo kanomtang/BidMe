@@ -45,3 +45,5 @@ D:\GitHub\BidMe\AuctionSystem\AuctionSystem\bin\System.Web.Mvc.xml
 D:\GitHub\BidMe\AuctionSystem\AuctionSystem\obj\Debug\AuctionSystem.csprojResolveAssemblyReference.cache
 D:\GitHub\BidMe\AuctionSystem\AuctionSystem\obj\Debug\AuctionSystem.dll
 D:\GitHub\BidMe\AuctionSystem\AuctionSystem\obj\Debug\AuctionSystem.pdb
+D:\GitHub\BidMe\AuctionSystem\AuctionSystem\bin\EntityFramework.dll
+D:\GitHub\BidMe\AuctionSystem\AuctionSystem\bin\EntityFramework.xml

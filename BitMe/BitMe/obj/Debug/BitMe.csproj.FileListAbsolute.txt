@@ -91,3 +91,7 @@ C:\workspace\compro\BitMe\BitMe\bin\System.Web.Mvc.xml
 C:\workspace\compro\BitMe\BitMe\obj\Debug\BitMe.csprojResolveAssemblyReference.cache
 C:\workspace\compro\BitMe\BitMe\obj\Debug\BitMe.dll
 C:\workspace\compro\BitMe\BitMe\obj\Debug\BitMe.pdb
+D:\GitHub\BidMe\BitMe\BitMe\bin\EntityFramework.dll
+D:\GitHub\BidMe\BitMe\BitMe\bin\EntityFramework.SqlServer.dll
+D:\GitHub\BidMe\BitMe\BitMe\bin\EntityFramework.xml
+D:\GitHub\BidMe\BitMe\BitMe\bin\EntityFramework.SqlServer.xml

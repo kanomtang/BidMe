@@ -32,7 +32,6 @@ namespace BitMe.Models.Repositories
         public virtual DbSet<CategoryTable> CategoryTables { get; set; }
         public virtual DbSet<TagTable> TagTables { get; set; }
         public virtual DbSet<UserTable> UserTables { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
     
         public virtual int AddProduct(string pname, string pdes, byte[] ima)
         {

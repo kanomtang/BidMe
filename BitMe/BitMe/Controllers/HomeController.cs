@@ -17,22 +17,14 @@ namespace BitMe.Controllers
         Item item = new Item();
 
         ProductRepository db = new ProductRepository();
-
+        
 
         // GET: Home
       
         public ActionResult Index()
         {
 
-            var temp = db.GetAllProduct();
-            if (temp==null)
-            {
-                
-            }
-            else if (temp!=null)
-            {
-                
-            }
+       
           
             return View();
         }
@@ -131,6 +123,12 @@ namespace BitMe.Controllers
 
         public ActionResult Login()
         {
+            return View();
+        }
+
+        public ActionResult Auction()
+        {
+            
             return View();
         }
     }

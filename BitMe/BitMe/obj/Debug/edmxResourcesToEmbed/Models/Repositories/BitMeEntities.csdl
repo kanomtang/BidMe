@@ -70,21 +70,5 @@
     <FunctionImport Name="ReteiveAllBrand" ReturnType="Collection(String)" />
     <FunctionImport Name="RetreiveallCategory" />
     <FunctionImport Name="RetrievAllUsername" />
-    <EntitySet Name="Products" EntityType="BidMeDBnewModel.Product" />
   </EntityContainer>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ProductId" />
-      <PropertyRef Name="ProductName" />
-      <PropertyRef Name="ProductPrice" />
-      <PropertyRef Name="ProductDescription" />
-      <PropertyRef Name="ProductCatagory" />
-    </Key>
-    <Property Name="ProductId" Type="Int32" Nullable="false" />
-    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ProductCatagory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
 </Schema>

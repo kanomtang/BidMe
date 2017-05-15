@@ -61,17 +61,5 @@
     <FunctionImportMapping FunctionImportName="ReteiveAllBrand" FunctionName="BidMeDBnewModel.Store.ReteiveAllBrand" />
     <FunctionImportMapping FunctionImportName="RetreiveallCategory" FunctionName="BidMeDBnewModel.Store.RetreiveallCategory" />
     <FunctionImportMapping FunctionImportName="RetrievAllUsername" FunctionName="BidMeDBnewModel.Store.RetrievAllUsername" />
-    <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="BidMeDBnewModel.Product">
-        <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-          <ScalarProperty Name="ProductCatagory" ColumnName="ProductCatagory" />
-          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

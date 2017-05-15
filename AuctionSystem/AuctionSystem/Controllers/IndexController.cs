@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AuctionSystem.Entities;
 using AuctionSystem.Models;
 
 namespace AuctionSystem.Controllers
 {
     public class IndexController : Controller
     {
-        public static List<Product> productList = new List<Product>();
-        Product p1 = new Product("Nike","shose",120);
-        Product p2 = new Product("Adidas", "shose", 150);
-        
+
+        AuctionDBEntities1 AuctionRepo = new AuctionDBEntities1();
+        ProductRepository pd = new ProductRepository();
+
         // GET: Index
         public ActionResult Index()
         {
@@ -25,44 +23,34 @@ namespace AuctionSystem.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Iogin(User user)
-        {
-            if (user.username=="buyer")
-            {        
+        public ActionResult Iogin(Models.User user)
+        {              
                 return View("Home", user);
-            }
-            else if (user.username == "seller")
-            { 
-                return View("SellProduct");
-            }
-            else
-            {
-                return View();
-            }
-           
         }
         
         public ActionResult Home()
         {
-            productList.Add(p1);
-            productList.Add(p2);
- 
+       
             //show product here!!!
             return View();
         }
 
-        public ActionResult Auction()
+        public ActionResult Auction
         {
+            get
+            {
 
-            return View();
+                return View();
+            }
         }
+
         [HttpGet]
         public ActionResult SellProduct()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult SellProduct(Product product)
+        public ActionResult SellProduct(Models.Product product)
         {
             return View("AddSuccess",product);
         }
@@ -70,6 +58,20 @@ namespace AuctionSystem.Controllers
         public ActionResult AddSuccess()
         {
             return View();
+        }
+        public ActionResult Bid()
+        {
+            var selectProduct = pd.FetchByID(2);
+            Models.Product myProduct = new Models.Product();
+            foreach (var x in selectProduct)
+            {
+                myProduct.ProductName = x.ProductName;
+                myProduct.description = x.ProductDescription;
+                myProduct.price = x.ProductPrice;
+            }
+             
+
+            return View(myProduct);
         }
     }
 }

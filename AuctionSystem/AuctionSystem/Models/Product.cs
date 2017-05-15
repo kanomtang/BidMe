@@ -2,23 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AuctionSystem.Models;
 
 namespace AuctionSystem.Models
 {
     public class Product
     {
-        public string name { get; set; }
+
+        public string ProductName { get; set; }
         public decimal price { get; set; }
         public string description { get; set; }
-        public int productID { get; set; }
+        public int ProductID { get; set; }
         public byte[] image { get; set; }
+        public DateTime EndDate { get; set; }
+        public IList<Bid> Bids { get; set; }
 
-        public Product(String name,String description,decimal price)
+        public void AddBid(User memberParam,decimal amountParam)
         {
-            this.name = name;
-            this.price = price;
-            this.description = description;
+            if (Bids.Count() == 0 || amountParam > Bids.Max(e => e.BidAmount))
+            {
+                Bids.Add(new Bid() { BidAmount = amountParam, DatePlaced = DateTime.Now, user = memberParam });
+            }
+            else
+            {
+                throw new InvalidOperationException("Bid amount too low");
+            }
         }
+
+       
 
         
     }
