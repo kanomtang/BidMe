@@ -123,6 +123,12 @@ namespace BitMe.Controllers
             Bid myBid = new Bid(user,myProduct);
             return View(myBid);
         }
+        [HttpGet]
+        public ActionResult RegisterPage()
+        {
+
+            return View();
+        }
         [HttpPost]
         public ActionResult RegisterPage(User u)
         {
@@ -136,6 +142,7 @@ namespace BitMe.Controllers
             }
             return View("Index");
         }
+
         [HttpGet]
         public ActionResult Login()
         {

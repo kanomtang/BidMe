@@ -30,9 +30,10 @@ namespace BitMe.Entities
         public int checkingDuplicateUsername(User u)
         {
 
-           // var b =db.RetrievAllUsername();
-            var d =db.UserTables.Find(u.UName);
-            if(d.Equals(true)){
+            // var b =db.RetrievAllUsername();
+            var a = db.checkDuplicateName(u.UName).Count();
+            if (a<1)
+            {
                 return 1;
             }
             return 0 ;
