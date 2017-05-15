@@ -68,14 +68,16 @@ namespace BitMe.Entities
         public List<Item> GetAllProduct()
         {   
                 List<Item> productList = new List<Item>();
-                var products = from p in db.Products select p;
+                var products = from p in db.AuctionProductTables select p;
                 foreach (var x in products)
                 {
                     Item product = new Item();
-                    product.ProductID = x.ProductId;
+                    product.ProductID = x.ProductID;
                     product.ProductName = x.ProductName;
-                    product.ProductPrice = x.ProductPrice;
-                    product.ProductCategory = x.ProductCatagory;
+                    product.TempWinner = x.BuyerName;
+                    
+                    //product.ProductPrice = x.ProductPrice;
+                    //product.ProductCategory = x.ProductCatagory;
                     //product.image = x.ProductImage;
                     productList.Add(product);
                 }

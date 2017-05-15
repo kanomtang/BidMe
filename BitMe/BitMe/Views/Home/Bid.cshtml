@@ -4,6 +4,68 @@
     ViewBag.Title = "Bid";
 }
 
-<h2>Bid</h2>
-@Model.product.ProductName
-@Model.product.TempWinner
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.product.picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.bidDeadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.TempWinner)
+        </th>
+    </tr>
+
+  
+    
+        <tr>
+            <td>
+                @Model.product.image
+            </td>
+            <td>
+                @Model.product.ProductID
+            </td>
+            <td>
+                @Model.product.ProductName
+            </td>
+            <td>
+                @Model.product.ProductDescription
+            </td>
+            <td>
+                @Model.product.ProductPrice
+            </td>
+            <td>
+                @Model.product.bidDeadline
+            </td>
+            <td>
+                @Model.product.TempWinner
+
+            </td>
+        </tr>
+    
+
+</table>
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.product.ProductPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.product.ProductPrice, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.product.ProductPrice, "", new { @class = "text-danger" })
+        <input type="submit" value="Bid" class="btn btn-success" />
+          
+    </div>
+</div>

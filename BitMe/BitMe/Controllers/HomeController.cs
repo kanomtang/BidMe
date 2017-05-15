@@ -93,13 +93,6 @@ namespace BitMe.Controllers
             return File(picture, "image");
         }
 
-        /*
-        [HttpGet]
-        public ActionResult Bid()
-        {
-            return View();
-        }
-        */
         [HttpGet]
         public ActionResult Bid(int id)
         {
@@ -109,8 +102,10 @@ namespace BitMe.Controllers
             {
                 myProduct.ProductName = x.ProductName;
                 myProduct.ProductDescription = x.ProductDescription;
-                //myProduct.ProductPrice = x.ProductPrice;
+                myProduct.ProductID = x.ProductID;
                 myProduct.TempWinner = x.BuyerName;
+                //myProduct.bidDeadline = x.BidEndTime;
+                //myProduct.ProductPrice = x.ProductPrice;
                 //myProduct.ProductPrice = x.ProductPrice;
             }
             Bid myBid = new Bid(user,myProduct);
@@ -166,6 +161,18 @@ namespace BitMe.Controllers
             }
 
             
+        }
+
+        [HttpGet]
+        public ActionResult SellProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SellProduct(Item product)
+        {
+            return View();
         }
     }
 }
