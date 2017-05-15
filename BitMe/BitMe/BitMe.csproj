@@ -167,7 +167,19 @@
     <Compile Include="Models\Repositories\CategoryTable.cs">
       <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Repositories\TagTable.cs">
+    <Compile Include="Models\Repositories\login_Result.cs">
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\Product.cs">
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BitMeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repositories\sysdiagram.cs">
       <DependentUpon>BitMeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories\UserTable.cs">
@@ -190,7 +202,8 @@
     <Content Include="Views\Home\addsuccess.cshtml" />
     <Content Include="Views\Home\RegisterPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Auction.cshtml" />
+    <Content Include="Views\Home\Bid.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

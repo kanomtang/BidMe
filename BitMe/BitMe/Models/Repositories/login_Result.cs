@@ -10,13 +10,13 @@
 namespace BitMe.Models.Repositories
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TagTable
+    public partial class login_Result
     {
-        public int TagID { get; set; }
-        public Nullable<int> BrandID { get; set; }
-        public string BrandName { get; set; }
-        public Nullable<int> ProductID { get; set; }
+        public int UID { get; set; }
+        public string UName { get; set; }
+        public string UPassword { get; set; }
+        public string UEmail { get; set; }
+        public string UAddress { get; set; }
     }
 }

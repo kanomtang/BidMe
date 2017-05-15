@@ -1,4 +1,4 @@
-﻿@model AuctionSystem.Models.Product
+﻿@model AuctionSystem.Models.Bid
 
 @{
     ViewBag.Title = "Bid";
@@ -6,7 +6,7 @@
 
 <h2>Bid</h2>
 
-
-@Model.ProductName
-@Model.description
-@Model.price
+@Model.user.Username
+@Model.user.Password
+@Model.product.ProductName
+@Model.product.price

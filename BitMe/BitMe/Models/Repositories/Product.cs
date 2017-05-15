@@ -12,20 +12,13 @@ namespace BitMe.Models.Repositories
     using System;
     using System.Collections.Generic;
     
-    public partial class AuctionProductTable
+    public partial class Product
     {
-        public int ProductID { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
+        public decimal ProductPrice { get; set; }
         public string ProductDescription { get; set; }
-        public Nullable<int> SellerID { get; set; }
-        public string SellerName { get; set; }
-        public Nullable<int> BuyerID { get; set; }
-        public string BuyerName { get; set; }
-        public Nullable<int> TagID { get; set; }
-        public Nullable<decimal> WinnerBid { get; set; }
-        public Nullable<System.DateTime> BidStartTime { get; set; }
-        public Nullable<System.DateTime> BidEndTime { get; set; }
-        public byte[] Image { get; set; }
-        public Nullable<decimal> ProductPrice { get; set; }
+        public string ProductCatagory { get; set; }
+        public byte[] ProductImage { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="AuctionProductTables">
       <EntityTypeMapping TypeName="BidMeDBnewModel.AuctionProductTable">
         <MappingFragment StoreEntitySet="AuctionProductTable">
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
@@ -35,16 +36,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TagTables">
-      <EntityTypeMapping TypeName="BidMeDBnewModel.TagTable">
-        <MappingFragment StoreEntitySet="TagTable">
-          <ScalarProperty Name="TagID" ColumnName="TagID" />
-          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UserTables">
       <EntityTypeMapping TypeName="BidMeDBnewModel.UserTable">
         <MappingFragment StoreEntitySet="UserTable">
@@ -61,5 +52,64 @@
     <FunctionImportMapping FunctionImportName="ReteiveAllBrand" FunctionName="BidMeDBnewModel.Store.ReteiveAllBrand" />
     <FunctionImportMapping FunctionImportName="RetreiveallCategory" FunctionName="BidMeDBnewModel.Store.RetreiveallCategory" />
     <FunctionImportMapping FunctionImportName="RetrievAllUsername" FunctionName="BidMeDBnewModel.Store.RetrievAllUsername" />
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="ProductCatagory" ColumnName="ProductCatagory" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BidMeDBnewModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="checkDuplicateName" FunctionName="BidMeDBnewModel.Store.checkDuplicateName" />
+    <FunctionImportMapping FunctionImportName="login" FunctionName="BidMeDBnewModel.Store.login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BidMeDBnewModel.login_Result">
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="UPassword" ColumnName="UPassword" />
+          <ScalarProperty Name="UEmail" ColumnName="UEmail" />
+          <ScalarProperty Name="UAddress" ColumnName="UAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BidMeDBnewModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BidMeDBnewModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BidMeDBnewModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BidMeDBnewModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BidMeDBnewModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BidMeDBnewModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BidMeDBnewModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BidMeDBnewModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BidMeDBnewModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

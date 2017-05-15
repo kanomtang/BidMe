@@ -74,6 +74,7 @@ namespace BitMe.Controllers
         [HttpGet]
         public ActionResult addProduct()
         {
+          
             return View();
         }
 
@@ -99,37 +100,62 @@ namespace BitMe.Controllers
          
 
         }
+
         public FileContentResult GetImage()
         {
             byte[] picture = item.picture;
             return File(picture, "image");
         }
-        [HttpGet]
-        public ActionResult RegisterPage()
+
+       
+    
+        public ActionResult Bid(int productID,User user)
         {
-            return View();
+
+            var selectProduct = db.FetchByID(2);
+            Models.Item myProduct = new Models.Item();
+            foreach (var x in selectProduct)
+            {
+                myProduct.ProductName = x.ProductName;
+                myProduct.ProductDescription = x.ProductDescription;
+                //myProduct.ProductPrice = x.ProductPrice;
+            }
+            Bid myBid = new Bid(user,myProduct);
+            return View(myBid);
         }
         [HttpPost]
         public ActionResult RegisterPage(User u)
         {
 
-            if(ModelState.IsValid){
-                if(db.checkingDuplicateUsername(u)==1){
+            if (ModelState.IsValid)
+            {
+                if (db.checkingDuplicateUsername(u) == 1)
+                {
                     db.RegisterNewUser(u);
                 }
             }
             return View("Index");
         }
-
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
-
-        public ActionResult Auction()
+        [HttpPost]
+        public ActionResult Login(User u)
         {
-            
-            return View();
+
+
+            if (db.login(u) == 1)
+            {
+                this.user.UName = u.UName;
+                this.user.UPassword = u.UPassword;
+                this.user.UEmail = u.UEmail;
+                this.user.UAdress = u.UAdress;
+                return View("Index");
+            }
+
+            return View("RegisterPage");
         }
     }
 }

@@ -35,14 +35,7 @@ namespace AuctionSystem.Controllers
             return View();
         }
 
-        public ActionResult Auction
-        {
-            get
-            {
-
-                return View();
-            }
-        }
+        
 
         [HttpGet]
         public ActionResult SellProduct()
@@ -59,8 +52,12 @@ namespace AuctionSystem.Controllers
         {
             return View();
         }
-        public ActionResult Bid()
+        
+        [HttpGet]
+        public ActionResult Bid(Entities.User user)
         {
+            user.Username = "JOKER";
+            user.Password = "12345";
             var selectProduct = pd.FetchByID(2);
             Models.Product myProduct = new Models.Product();
             foreach (var x in selectProduct)
@@ -69,9 +66,9 @@ namespace AuctionSystem.Controllers
                 myProduct.description = x.ProductDescription;
                 myProduct.price = x.ProductPrice;
             }
-             
+            Bid bid = new Models.Bid(user,myProduct);
 
-            return View(myProduct);
+            return View(bid);
         }
     }
 }

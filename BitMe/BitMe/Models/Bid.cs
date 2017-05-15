@@ -7,9 +7,13 @@ namespace BitMe.Models
 {
     public class Bid
     {
-        public List<User> user { get; set; }
-        public DateTime DatePlaced { get; set; }
-        public decimal BidAmount { get; set; }
+        public User user { get; set; }
+        public Item product { get; set; }
+        public Bid(User user, Item product)
+        {
+            this.user = user;
+            this.product = product;
+        }
 
     }
 }

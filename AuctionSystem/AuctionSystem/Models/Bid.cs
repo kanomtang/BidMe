@@ -7,8 +7,14 @@ namespace AuctionSystem.Models
 {
     public class Bid
     {
-        public User user { get; set; }
-        public DateTime DatePlaced { get; set; }
-        public decimal BidAmount { get; set; }
+        public Entities.User user { get; set; }
+        public Product product { get; set; }
+        public Bid(Entities.User user,Product product)
+        {
+            this.user = user;
+            this.product = product;
+        }
     }
+    
+    
 }

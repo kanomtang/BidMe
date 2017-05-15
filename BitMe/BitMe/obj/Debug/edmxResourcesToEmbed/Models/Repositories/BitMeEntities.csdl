@@ -16,6 +16,7 @@
     <Property Name="BidStartTime" Type="DateTime" Precision="3" />
     <Property Name="BidEndTime" Type="DateTime" Precision="3" />
     <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="BrandTable">
     <Key>
@@ -31,15 +32,6 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
     <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="TagTable">
-    <Key>
-      <PropertyRef Name="TagID" />
-    </Key>
-    <Property Name="TagID" Type="Int32" Nullable="false" />
-    <Property Name="BrandID" Type="Int32" />
-    <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ProductID" Type="Int32" />
-  </EntityType>
   <EntityType Name="UserTable">
     <Key>
       <PropertyRef Name="UID" />
@@ -54,7 +46,6 @@
     <EntitySet Name="AuctionProductTables" EntityType="Self.AuctionProductTable" />
     <EntitySet Name="BrandTables" EntityType="Self.BrandTable" />
     <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
-    <EntitySet Name="TagTables" EntityType="Self.TagTable" />
     <EntitySet Name="UserTables" EntityType="Self.UserTable" />
     <FunctionImport Name="AddProduct">
       <Parameter Name="pname" Mode="In" Type="String" />
@@ -70,5 +61,83 @@
     <FunctionImport Name="ReteiveAllBrand" ReturnType="Collection(String)" />
     <FunctionImport Name="RetreiveallCategory" />
     <FunctionImport Name="RetrievAllUsername" />
+    <EntitySet Name="Products" EntityType="BidMeDBnewModel.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="BidMeDBnewModel.sysdiagram" />
+    <FunctionImport Name="checkDuplicateName" ReturnType="Collection(String)">
+      <Parameter Name="UName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="login" ReturnType="Collection(BidMeDBnewModel.login_Result)">
+      <Parameter Name="Uname" Mode="In" Type="String" />
+      <Parameter Name="Upassword" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BidMeDBnewModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BidMeDBnewModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCatagory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="login_Result">
+    <Property Type="Int32" Name="UID" Nullable="false" />
+    <Property Type="String" Name="UName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="UPassword" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UAddress" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>
