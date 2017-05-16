@@ -4,43 +4,47 @@
     ViewBag.Title = "Profile";
 }
 
+<h2>Profile</h2>
 
-<div class="container-fluid">
-    <div class="row content">
-        <div class="col-sm-3 sidenav">
-            <h2> </h2>
-                <img class="img-rounded" src="~/Image/20161217_114128.jpg" width="230" height="230"/>
-        </div>
-       @using (Html.BeginForm("Profile"))
-       {
-        <div class="col-sm-9">
-            <h4><small>User ID</small></h4>
-            <hr>
-            <h2>@Html.DisplayFor(model => model.UName)</h2>
-            
-            <p>Description</p>
-            <br>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UName)
+        </dt>
 
-            <h4><small>Email</small></h4>
-            <hr>
-            <h2>@Html.DisplayFor(model => model.UEmail)</h2>
-            
-            <br>
+        <dd>
+            @Html.DisplayFor(model => model.UName)
+        </dd>
 
-            <h4><small>Address</small></h4>
-            <hr>
-            <h2>@Html.DisplayFor(model => model.UAdress)</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <br>
-            <hr>
-            <br>
-            
-            <button type="button" class="btn btn-danger" OnClick="window.open('EditProfile', 'Profile');">Edit Profile</button>
-            
+        <dt>
+            @Html.DisplayNameFor(model => model.UPassword)
+        </dt>
 
-        </div>
-       }
-        
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.UPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UAdress)
+        </dd>
+
+    </dl>
 </div>
-        
+<p>
+    @Html.ActionLink("Edit", "EditProfile", new { /* id = Model.PrimaryKey */ id = Model.UName }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -4,10 +4,11 @@
     ViewBag.Title = "Bid";
 }
 
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.product.picture)
+            @Html.DisplayNameFor(model => model.product.image)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.product.ProductID)
@@ -69,3 +70,10 @@
           
     </div>
 </div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+ 

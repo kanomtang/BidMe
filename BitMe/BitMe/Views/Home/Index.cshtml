@@ -4,13 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-right">
             @Html.ActionLink("Sign out", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-right">
-            @Html.ActionLink("Profile", "Profile", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Profile", "Profile", "Home", new { username = "joker" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-right"> 
             @Html.ActionLink("Sell Product", "addProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -21,10 +22,11 @@
     </div>
 </div>
 <h2>Index</h2>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ImageMimeType)
+            @Html.DisplayNameFor(model => model.pictureByte)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductID)
@@ -33,7 +35,7 @@
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductCategory)
+            @Html.DisplayNameFor(model => model.ProductDescription)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductPrice)
@@ -47,7 +49,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.image)
+            @Html.DisplayFor(modelItem => item.pictureByte)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProductID)
@@ -56,13 +58,14 @@
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductCategory)
+            @Html.DisplayFor(modelItem => item.ProductDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProductPrice)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.bidDeadline)
+           
         </td>
         <td>
             @Html.ActionLink("Bid", "Bid", new { id=item.ProductID }) 

@@ -20,24 +20,28 @@ namespace BitMe.Controllers
         
 
 
-        [HttpGet]
+        
         public ActionResult Index()
         {
             var productList = db.GetAllProduct();
             return View(productList);
         }
 
-        public new ActionResult Profile()
+        [HttpGet]
+        public new ActionResult Profile(string username)
         {
-            //Connect to db and add each data to model to display.
-            //such as model.UName = db.Uname;
-            //User model = new User();
-            //model.UName = "iJOKE";
-            //model.UAccount = "chiangmai";
-            //model.UPassword = "12345*";
-            //model.UEmail = "Email@gmail";
-            //model.UMoney = 1000;
-            return View(model);
+            var user = db.FetchUserByName(username);
+            Models.User myUser = new Models.User();
+            foreach (var x in user)
+            {
+                myUser.UName = x.UName;
+                myUser.UPassword = x.UPassword;
+                myUser.UEmail = x.UEmail;
+                myUser.UAdress = x.UAddress;
+            }
+
+            
+            return View(myUser);
         }
 
         [HttpGet]
@@ -74,19 +78,40 @@ namespace BitMe.Controllers
         {
             db.addItem(item, Image);
          return View("addsuccess",item);
-            
-
-
         }
 
         public FileContentResult GetImage()
         {
-            byte[] picture = item.picture;
+            byte[] picture = item.pictureByte;
             return File(picture, "image");
         }
 
         [HttpGet]
-        public ActionResult Bid(int id,User user)
+        public ActionResult Bid(int id,User u)
+        { 
+            var selectProduct = db.FetchByID(id);
+            Models.Item myProduct = new Models.Item();
+            foreach (var x in selectProduct)
+            {
+                myProduct.ProductName = x.ProductName;
+                myProduct.ProductDescription = x.ProductDescription;
+                myProduct.ProductID = x.ProductID;
+                myProduct.TempWinner = x.BuyerName;
+                myProduct.ProductPrice = (decimal)x.ProductPrice; 
+                //myProduct.bidDeadline = x.BidEndTime;
+                //myProduct.ProductPrice = x.ProductPrice;
+                //myProduct.ProductPrice = x.ProductPrice;
+            }
+
+            Bid myBid = new Bid(user,myProduct);
+            
+            return View(db.Auction(myBid));
+            
+        }
+
+        
+        [HttpPost]
+        public ActionResult Bid(int id)
         {
             var selectProduct = db.FetchByID(id);
             Models.Item myProduct = new Models.Item();
@@ -96,15 +121,19 @@ namespace BitMe.Controllers
                 myProduct.ProductDescription = x.ProductDescription;
                 myProduct.ProductID = x.ProductID;
                 myProduct.TempWinner = x.BuyerName;
+                myProduct.ProductPrice = (decimal)x.ProductPrice;
                 //myProduct.bidDeadline = x.BidEndTime;
                 //myProduct.ProductPrice = x.ProductPrice;
                 //myProduct.ProductPrice = x.ProductPrice;
+               
             }
-            Bid myBid = new Bid(user,myProduct);
+
+            Bid myBid = new Bid(user, myProduct);
             //db.Auction(myBid);
             return View(myBid);
         }
 
+   
         [HttpGet]
         public ActionResult RegisterPage()
         {
@@ -142,14 +171,12 @@ namespace BitMe.Controllers
             {
                 this.user.UName = u.UName;
                 this.user.UPassword = u.UPassword;
-                this.user.UEmail = u.UEmail;
-                this.user.UAdress = u.UAdress;
-                //return View("Index");
                 return RedirectToAction("Index","Home",u);
             }
             else
-            {
-                return View("RegisterPage");
+            {   
+                //Aleart to view "Username already exits"
+                return RedirectToAction("RegisterPage");
             }
 
             

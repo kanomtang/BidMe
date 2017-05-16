@@ -18,18 +18,21 @@ namespace BitMe.Entities
         public void addItem(Item i, HttpPostedFileBase pic)
         {
            // var a = i.ProductName;
-            //var b = ConvertToBytes(pic);
+            var b = ConvertToBytes(pic);
+            
 
             var products = from p in db.AuctionProductTables select p;
             var newId = GetAllProduct().Count() + 1;
-            
+
             db.AuctionProductTables.Add(new AuctionProductTable
             {
                 ProductID = newId,
                 ProductName = i.ProductName,
                 ProductDescription = i.ProductDescription,
                 ProductPrice = i.ProductPrice,
-                
+                BidEndTime = i.bidDeadline,
+                Image = b
+
             });
             
             db.SaveChanges();
@@ -37,10 +40,12 @@ namespace BitMe.Entities
 
         }
 
-        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        public byte[] ConvertToBytes(HttpPostedFileBase file)
         {
-            ImageConverter converter = new ImageConverter();
-            return (byte[])converter.ConvertTo(image, typeof(byte[]));
+            byte[] imageByte = null;
+            BinaryReader rdr = new BinaryReader(file.InputStream);
+            imageByte = rdr.ReadBytes((int)file.ContentLength);
+            return imageByte;
         }
 
         public int checkingDuplicateUsername(User u)
@@ -82,6 +87,7 @@ namespace BitMe.Entities
 
         public List<Item> GetAllProduct()
         {   
+
                 List<Item> productList = new List<Item>();
                 var products = from p in db.AuctionProductTables select p;
                 foreach (var x in products)
@@ -91,9 +97,13 @@ namespace BitMe.Entities
                     product.ProductName = x.ProductName;
                     product.TempWinner = x.BuyerName;
                     product.ProductCategory = x.ProductCatagory;
+                    product.ProductDescription = x.ProductDescription;
                     //product.bidDeadline = x.BidEndTime;
-                    //product.ProductPrice = x.ProductPrice;
-                    //product.image = x.ProductImage;
+                    product.ProductPrice = (decimal)x.ProductPrice;
+                //  product.image = ByteArrayToImagebyMemoryStream((byte[])x.Image);
+                    
+
+
                     productList.Add(product);
                 }
                
@@ -114,9 +124,13 @@ namespace BitMe.Entities
             //Update in db 
         }
 
-        public void Auction(Bid bidProduct)
+        public Bid Auction(Bid bidProduct)
         {
+
             var AuctionProduct = from p in db.AuctionProductTables select p;
+            Models.Item myProduct = new Models.Item();
+            
+            var selectProduct = FetchByID(bidProduct.product.ProductID);
             foreach (var x in AuctionProduct)
             {
                 x.ProductID = bidProduct.product.ProductID;
@@ -127,7 +141,27 @@ namespace BitMe.Entities
                 x.BidStartTime = DateTime.Now;
 
             }
-            
+            foreach (var x in selectProduct)
+            {
+                myProduct.ProductName = x.ProductName;
+                myProduct.ProductDescription = x.ProductDescription;
+                myProduct.ProductID = x.ProductID;
+                myProduct.TempWinner = x.BuyerName;
+                myProduct.ProductPrice = (decimal)x.ProductPrice;
+
+
+            }
+            Bid bidUpate = new Bid(bidProduct.user,myProduct);
+            return bidUpate;
+
+
         }
+
+        public List<Models.Repositories.UserTable> FetchUserByName(string userName)
+        {
+            var user = db.UserTables.Where(x => x.UName == userName).ToList();
+            return user;
+        }
+
     }
 }

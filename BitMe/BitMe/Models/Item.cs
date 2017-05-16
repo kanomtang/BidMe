@@ -8,9 +8,8 @@ namespace BitMe.Models
 {
     public class Item
     {
-        public byte[] picture { get; set; }
+        public byte[] pictureByte { get; set; }
         public HttpPostedFileBase image { get; set; }
-        public string ImageMimeType { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }

@@ -21,7 +21,9 @@
     <div>@Model.ProductPrice</div>
     <div>@Model.ProductDescription</div>
     <div>@Model.bidDeadline</div>
-    <img src="<%= Url.Action(" GetImage") %>" />
+    <div>@Model.image</div>
+    @Html.HiddenFor(m => m.image)
+    
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

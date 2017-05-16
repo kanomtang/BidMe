@@ -9,6 +9,7 @@ namespace BitMe.Models
     {
         public User user { get; set; }
         public Item product { get; set; }
+
         public Bid(User user, Item product)
         {
             this.user = user;
